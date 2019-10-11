@@ -15,12 +15,6 @@ baseDownloadUrl_1="http://download.windowsupdate.com/d/msdownload/update/softwar
 baseDownloadUrl_2="http://download.windowsupdate.com/d/msdownload/update/software/secu/2019/10/"
 baseDownloadUrl_3="http://download.windowsupdate.com/c/msdownload/update/software/secu/2019/10/"
 
-downloadUrls["1709_x64"] = baseDownloadUrl_3 + "windows10.0-kb4521860-x64_486da3e1878a8b4631765795d1dc50c9524a62c8.msu"
-downloadUrls["1803_x86"] = baseDownloadUrl_3 + "windows10.0-kb4521861-x86_265543ab6ab627141403ace27fa08c73d0007309.msu"
-downloadUrls["1803_x64"] = baseDownloadUrl_3 + "windows10.0-kb4521861-x64_423fa096aa7181e817ca9eb97b9acefbea5304fc.msu"
-
-# TODO: What about servers??
-
 ## Determine x64 or x86
 
 try:
