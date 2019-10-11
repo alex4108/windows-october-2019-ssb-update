@@ -24,17 +24,17 @@ except:
     arch="x86"
 
 ## Determine OS version
+key = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+val = "ReleaseID"
+output = os.popen( 'REG QUERY "{0}" /V "{1}"'.format( key , val)  ).read()
+releaseId = output.strip().split(' ')[-1]         
+print("Release ID" + releaseId)
+versionCode = releaseId + "_" + arch
+print(versionCode)
 
-try: 
-    key = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
-    val = "ReleaseID"
-    output = os.popen( 'REG QUERY "{0}" /V "{1}"'.format( key , val)  ).read()
-    releaseId = output.strip().split(' ')[-1]         
-    versionCode = releaseId + "_" + arch
-    print(versionCode)
 
-
-except: # There wa an error because this may be windows server
+if (releaseId == ""):
+    print("Checking if server");
     output = os.popen ('wmic os get Caption /value').read().lstrip().rstrip()
     print(output)
     # output = "Caption=Microsoft Windows Server 2012 R2 Standard"
@@ -48,7 +48,7 @@ except: # There wa an error because this may be windows server
         versionCode="SERVER_2008"
     if ( output.find("2016") != -1 ): 
         versionCode="SERVER_2016"
-    
+
     
 print (versionCode)
 
