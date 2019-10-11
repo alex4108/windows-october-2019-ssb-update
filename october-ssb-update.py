@@ -35,10 +35,11 @@ try:
     key = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
     val = "ReleaseID"
     output = os.popen( 'REG QUERY "{0}" /V "{1}"'.format( key , val)  ).read()
-    releaseId = int( output.strip().split(' ')[-1] )
-        
-    winver = getReleaseId()
-    versionCode = winver + "_" + arch
+    releaseId = output.strip().split(' ')[-1]         
+    versionCode = releaseId + "_" + arch
+    print(versionCode)
+
+
 except: # There wa an error because this may be windows server
     output = os.popen ('wmic os get Caption /value').read().lstrip().rstrip()
     print(output)
@@ -55,7 +56,7 @@ except: # There wa an error because this may be windows server
         versionCode="SERVER_2016"
     
     
-
+print (versionCode)
 
 ## Apply patch
 if ( versionCode == "SERVER_2012R2" ):
